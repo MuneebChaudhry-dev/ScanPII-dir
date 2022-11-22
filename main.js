@@ -61,10 +61,20 @@ function arrangeIntoTree(paths) {
       }
     });
   });
+  // console.log(JSON.stringify(tree));
+  function addUniqueID(arr, idstr = "") {
+    arr.forEach((obj, i) => {
+      obj.id = `${idstr}${obj.name}${i}`;
+      if (obj.children) {
+        addUniqueID(obj.children);
+      }
+    });
+  }
+  // console.log(JSON.stringify(tree, null, 2));
+  addUniqueID(tree);
   console.log(JSON.stringify(tree, null, 2));
-  return JSON.stringify(tree, null, 2);
-
-  // cb(tree);
+  // console.log(JSON.stringify(newobj, null, 2));
+  return JSON.stringify(tree);
 }
 /***********Listing the Paths and  Returning in Tree************/
 const dirs = async (path = dirPath) =>
@@ -77,7 +87,7 @@ const dirs = async (path = dirPath) =>
 ipcMain.on("fetch", async (e, arg) => {
   dirs(dirPath).then((p) => {
     const dirTree = arrangeIntoTree(p);
-    console.log(dirTree);
+    // console.log(dirTree);
     e.reply("publish", dirTree);
   });
 });

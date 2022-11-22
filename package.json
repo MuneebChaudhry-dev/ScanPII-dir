@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^14.1.0",
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
+    "@syncfusion/ej2-angular-navigations": "^20.3.57",
+    "directory-tree": "^3.4.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "underscore": "^1.13.6",
